@@ -152,7 +152,7 @@ export default function AdminPage() {
         <div>
           <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
           <p className="text-zinc-500">
-            Welcome back, Munyakazi. Here's what's happening today.
+            Welcome back, Munyakazi. Here's what's happening so far.
           </p>
         </div>
         <Button
