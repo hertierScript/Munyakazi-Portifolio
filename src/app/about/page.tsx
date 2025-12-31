@@ -57,6 +57,7 @@ export default function AboutPage() {
   const [profile, setProfile] = useState<Profile>({});
 
   useEffect(() => {
+    document.title = "About - Munyakazi Nshimiye";
     const fetchProfile = async () => {
       try {
         const res = await fetch("/api/profile");
@@ -121,8 +122,7 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-square overflow-hidden rounded-3xl border border-zinc-800">
             <img
-              src={
-                profile.profilePicture}
+              src={profile.profilePicture}
               alt={profile.fullName || "Munyakazi Nshimiye"}
               className="h-full w-full object-cover grayscale transition-all hover:grayscale-0"
             />

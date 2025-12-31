@@ -23,13 +23,29 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const projects = [];
+interface Project {
+  _id: string;
+  title: string;
+  description: string;
+  github?: string;
+  live?: string;
+  thumbnail: string;
+  tags: string[];
+}
+
+interface Testimony {
+  _id: string;
+  fullname: string;
+  role: string;
+  testimony: string;
+}
 
 export default function SoftwarePage() {
-  const [testimonials, setTestimonials] = useState([]);
-  const [projects, setProjects] = useState([]);
+  const [testimonials, setTestimonials] = useState<Testimony[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
+    document.title = "Software Development - Munyakazi Nshimiye";
     const fetchTestimonials = async () => {
       try {
         const res = await fetch("/api/testimonials", { cache: "no-store" });
@@ -44,7 +60,7 @@ export default function SoftwarePage() {
 
     const fetchProjects = async () => {
       try {
-        const res = await fetch("/admin/api/project", { cache: "no-store" });
+        const res = await fetch("/api/project", { cache: "no-store" });
         if (!res.ok) throw new Error("Failed to fetch");
         const contentType = res.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {

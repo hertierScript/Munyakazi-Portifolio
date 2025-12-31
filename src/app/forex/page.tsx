@@ -22,6 +22,21 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+interface ForexStudy {
+  _id: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  week: string;
+}
+
+interface Testimony {
+  _id: string;
+  fullname: string;
+  role: string;
+  testimony: string;
+}
+
 const strategyPoints = [
   {
     title: "Market Structure",
@@ -50,10 +65,11 @@ const strategyPoints = [
 ];
 
 export default function ForexPage() {
-  const [testimonials, setTestimonials] = useState([]);
-  const [forexStudies, setForexStudies] = useState([]);
+  const [testimonials, setTestimonials] = useState<Testimony[]>([]);
+  const [forexStudies, setForexStudies] = useState<ForexStudy[]>([]);
 
   useEffect(() => {
+    document.title = "Forex Mentorship - Munyakazi Nshimiye";
     const fetchTestimonials = async () => {
       try {
         const res = await fetch("/api/testimonials", { cache: "no-store" });

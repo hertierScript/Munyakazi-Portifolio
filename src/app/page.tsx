@@ -13,11 +13,13 @@ import {
   UserPlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TypingAnimation from "@/components/TypingAnimation";
 
 export default function Home() {
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
+    document.title = "Munyakazi Nshimiye - Full-Stack Developer & Forex Mentor";
     const fetchProfile = async () => {
       try {
         const res = await fetch("/api/profile");
@@ -61,15 +63,16 @@ export default function Home() {
           <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-7xl">
             Hi, I’m{" "}
             <span className="bg-gradient-to-r from-software to-forex bg-clip-text text-transparent">
-              {profile.fullName || 'Munyakazi Nshimiye'}
+              {profile.fullName || "Munyakazi Nshimiye"}
             </span>{" "}
             <br />
             <span className="text-3xl md:text-5xl opacity-90">
-              {profile.title || 'Full-Stack Developer & Forex Mentor'}
+              <TypingAnimation />
             </span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-zinc-400 md:text-xl">
-            {profile.bio || 'I build scalable web systems using React, Next.js, Node.js, MongoDB, and Tailwind. I also teach institutional Smart Money Concepts to traders seeking market precision and consistency.'}
+            {profile.bio ||
+              "I build scalable web systems using React, Next.js, Node.js, MongoDB, and Tailwind. I also teach institutional Smart Money Concepts to traders seeking market precision and consistency."}
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
